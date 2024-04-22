@@ -8,6 +8,17 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+document.addEventListener("DOMContentLoaded", function() {
+    var dropdownToggle = document.querySelector(".dropdown-toggle");
+    var dropdownMenu = document.querySelector(".dropdown-menu");
+    
+    dropdownToggle.addEventListener("click", function(event) {
+      event.preventDefault();
+      if (dropdownMenu.classList.contains("show")) {
+        dropdownMenu.classList.remove("show");
+      } else {
+        dropdownMenu.classList.add("show");
+      }
+    });
+});
+  

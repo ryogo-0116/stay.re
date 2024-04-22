@@ -1,0 +1,17 @@
+<%= form_with(model: @reservation, url: confirm_reservation_path, method: :post) do |f| %>
+    <div class="field">
+      <%= f.label :check_in_date %>
+      <%= f.date_field :check_in_date %>
+    </div>
+    <div class="field">
+      <%= f.label :check_out_date %>
+      <%= f.date_field :check_out_date %>
+    </div>
+    <div class="field">
+      <%= f.label :num_of_guests %>
+      <%= f.number_field :num_of_guests, min: 1 %>
+    </div>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "予約を確認する" %>
+  <% end %>
+  

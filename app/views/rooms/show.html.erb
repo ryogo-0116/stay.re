@@ -1,0 +1,9 @@
+<% if @room.image.attached? %>
+  <div><%= image_tag(@room.image) %></div>
+<% end %>
+<h1><%= @room.name %></h1>
+<p><%= @room.description %></p>
+<p><strong>料金:</strong> <%= @room.price %></p>
+<p><strong>住所:</strong> <%= @room.address %></p>
+
+<%= link_to 'この施設を予約する', new_reservation_path(room_id: @room.id) %>

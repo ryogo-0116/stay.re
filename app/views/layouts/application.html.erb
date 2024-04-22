@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Syukuhaku</title>
+    <title>Stay</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,24 @@
   </head>
 
   <body>
+  <header>
+  <a href="/" class="header-logo">Potepan Share</a>
+  <div class="header-menus">
+    <% if user_signed_in? %>
+    <div class="dropdown">
+      <%= image_tag 'https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png', width: 40, height: 40 %>
+      <%= link_to current_user.name, "#", class: "dropdown-toggle" %>
+      
+      <%= link_to "プロフィール", user_path(current_user) %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+     
+    </div>
+    <% else %>
+      <%= link_to "新規登録", new_user_registration_path %>
+      <%= link_to "ログイン", new_user_session_path %>
+    <% end %>
+  </div>
+  </header>
     <%= yield %>
   </body>
 </html>
